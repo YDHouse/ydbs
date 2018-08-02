@@ -1,3 +1,4 @@
 # node_module 제외하기
 # npm으로 설치한 모듈 버전 정보는 package.json에 담겨있기 때문에 모듈을 git에 올릴 필요가 없다.
 node_modules
+ydbsmasterdata.js

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>간편장부</title>
+  </head>
+  <body>
+    <h1>장부</h1>
+    <table border="2">
+      <tr>
+        <th>날짜</th>
+        <th>거래구분</th>
+        <th>거래내용</th>
+        <th>거래처</th>
+        <th>수입금액</th>
+        <th>수입VAT</th>
+        <th>비용금액</th>
+        <th>비용VAT</th>
+        <th>고정자산비용</th>
+        <th>고정자산VAT</th>
+        <th>비고</th>
+      </tr>
+      <%
+      for(var i = 0; i<booksList.length; i++)
+      {
+      %>
+      <tr>
+        <td><%=booksList[i].booksdate%></td>
+        <td><%=booksList[i].booksclassfication%></td>
+        <td><%=booksList[i].booksdetails%></td>
+        <td><%=booksList[i].booksclient%></td>
+        <td><%=booksList[i].booksincome%></td>
+        <td><%=booksList[i].booksincomevat%></td>
+        <td><%=booksList[i].booksexpense%></td>
+        <td><%=booksList[i].booksexpensevat%></td>
+        <td><%=booksList[i].booksasset%></td>
+        <td><%=booksList[i].booksassetvat%></td>
+        <td><%=booksList[i].booksremarks%></td>
+      </tr>
+      <%
+      }
+      %>
+
+    </table>
+  </body>
+</html>
