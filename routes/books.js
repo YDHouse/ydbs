@@ -14,15 +14,27 @@ var connection = mysql.createConnection({
     database: 'ydbs'
 });
 
-//DB에서 data 가져와서 리스트로 만들기
 router.get('/', function(req, res, next) {
-    connection.query('SELECT * FROM BOOKS', function(err, rows) {
+    res.render('index');
+    console.log("홈");
+});
+
+router.get('/books', function(req, res, next) {
+    connection.query('SELECT DATE_FORMAT(booksdate, "%x-%m-%d")AS bdate, booksclassfication, booksdetails, booksclient, booksincome, booksincomevat, booksexpense, booksexpensevat, booksasset, booksassetvat, booksremarks FROM BOOKS', function(err, rows) {
         //에러값이 있다면 로그에 표시
         if(err) console.log(err);
-
         //views 폴더에 있는 booksList파일로 data를 보낸다.
         res.render('booksList', { title:'BooksList', booksList: rows});
+        console.log("장부");
     });
+});
+
+router.get('/booksSearch', function(req, res, next) {
+    console.log("조회");
+});
+
+router.get('/booksInsert', function(req, res, next) {
+    console.log("기장");
 });
 
 module.exports = router;

@@ -14,12 +14,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//app에 등록
-app.use('/', index);
-//books로 접속요청이 들어오면 books 파일로 이동시켜 준다
-app.use('/books', books);
+//페이지 별 js 파일 연결
+//app.use('/', index);          //로그인 페이지
+app.use('/', books);    //장부 페이지
 
-//서버가동
+//서버가동 확인
 app.listen(port, () => {
     console.log(`서버가동!!!`);
 });

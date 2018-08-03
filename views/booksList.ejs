@@ -1,11 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
     <title>간편장부</title>
+  
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   </head>
+  
   <body>
-    <h1>장부</h1>
-    <table border="2">
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="/">HOME</a></li>
+      <li role="presentation" class="active"><a href="/books">장부기입</a></li>
+      <li role="presentation"><a href="#">장부분석</a></li>
+      <li role="presentation"><a href="#">감가상각</a></li>
+      <li role="presentation"><a href="#">거래처</a></li>
+      <li role="presentation"><a href="#">명세서</a></li>
+      <li role="presentation"><a href="#">계산서</a></li>
+    </ul>
+
+    <h3></h3>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">연도<span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu">
+          <li>2018</li>
+          <li>2019</li>
+          <li>2020</li>
+          <li class="divider"></li>
+          <li>전체선택</li>
+        </ul>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">월<span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu">
+          <% for(var i = 1; i<=12; i++) { %>
+          <li> <%=i%> </li>
+          <% } %>
+        </ul>
+    </div>
+    <div class="btn-group"><a href="/booksSearch"><button type="button" class="btn btn-link" id="btnBooksSearch" aria-expanded="false">조회</button></a></div>
+    <div class="btn-group"><a href="/booksInsert"><button type="button" class="btn btn-link" id="btnBooksInsert" aria-expanded="false">장부입력</button></a></div>
+
+    <h3></h3>
+
+    <table class="table table-condensed">
       <tr>
         <th>날짜</th>
         <th>거래구분</th>
@@ -24,7 +73,7 @@
       {
       %>
       <tr>
-        <td><%=booksList[i].booksdate%></td>
+        <td><%=booksList[i].bdate%></td>
         <td><%=booksList[i].booksclassfication%></td>
         <td><%=booksList[i].booksdetails%></td>
         <td><%=booksList[i].booksclient%></td>
@@ -41,5 +90,19 @@
       %>
 
     </table>
+
+    <script>    
+      $("li").click(function(){
+        var result = $(this).text();
+        console.log(result);
+      });
+      $("#btnBooksSearch").click(function() {
+        console.log("버튼1");
+      });
+      $("#btnBooksInsert").click(function() {
+        console.log("버튼2");
+      });
+    </script>
+
   </body>
 </html>
