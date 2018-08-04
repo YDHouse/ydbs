@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome",
-            "url": "http://localhost:7361",
+            "url": "http://localhost:7361/books",
             "webRoot": "${workspaceFolder}"
         },
         {
