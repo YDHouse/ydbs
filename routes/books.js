@@ -4,7 +4,10 @@ var sqlword = ydbsmasterdata.sqlmanager;
 //모듈 임포트
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 var mysql = require('mysql');
+
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -14,7 +17,8 @@ var connection = mysql.createConnection({
     database: 'ydbs'
 });
 
-router.get('/books', function(req, res, next) {
+
+router.get('/books', function(req, res) {
     connection.query('SELECT DATE_FORMAT(booksdate, "%x-%m-%d")AS bdate, booksclassfication, booksdetails, booksclient, booksincome, booksincomevat, booksexpense, booksexpensevat, booksasset, booksassetvat, booksremarks FROM BOOKS', function(err, rows) {
         //에러값이 있다면 로그에 표시
         if(err) console.log(err);
@@ -35,7 +39,7 @@ router.get('/booksSearch/:dateStart/:dateEnd', function(req, res, next) {
     });
 });
 
-router.get('/booksInsert', function(req, res, next) {
+router.get('/booksInsert', function(req, res) {
     console.log("기장");
 });
 
